@@ -410,21 +410,25 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btQuadradoActionPerformed
     
     private String DoubleToString(Double numero){
-        if(numero != null){
-            DecimalFormat formato = new DecimalFormat("##, ###, ###, ##0.00", new DecimalFormatSymbols(new Locale ("pt", "BR")));
-            formato.setParseBigDecimal(true);
+        if (numero != null) {
+        if (numero == numero.longValue()) {
+            DecimalFormat formato = new DecimalFormat("#,##0", new DecimalFormatSymbols(new Locale("pt", "BR")));
             return formato.format(numero);
+        } else {
+            DecimalFormat formato = new DecimalFormat("#,##0.##########", new DecimalFormatSymbols(new Locale("pt", "BR")));
+            return formato.format(numero);
+            }
         }
         return "";
     }
     
     private Double stringToDouble(String numero){
-        NumberFormat nf = NumberFormat.getInstance();
+        NumberFormat nf = NumberFormat.getInstance(new Locale("pt", "BR"));
         Double dv = 0.0;
         try{
             dv = nf.parse(numero).doubleValue();
-        }catch(ParseException ex){
-            
+        } catch(ParseException ex){
+            System.err.println("Erro de parsing no número: " + numero);
         }
         return dv;
     }
