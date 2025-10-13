@@ -33,6 +33,12 @@ public class CalculatorController {
             }
             return total;
         }
+        
+        if (operacao.equals(EnumOperacao.QUADRADO)) {
+            total = Math.pow(valor, 2);
+            return total;
+        }
+        
         if (!totalInicializado) {
             total = valor;
             totalInicializado = true;
