@@ -5,6 +5,7 @@
 package calculator.controller;
 
 import calculator.enums.EnumOperacao;
+import java.lang.Math;
 
 /**
  *
@@ -13,7 +14,6 @@ import calculator.enums.EnumOperacao;
 public class CalculatorController {
 
     private Double total;
-    // 1. Adicionamos um controle para saber se o valor total já foi inicializado.
     private boolean totalInicializado;
 
     public CalculatorController() {
@@ -21,6 +21,18 @@ public class CalculatorController {
     }
 
     public Double realizaOperacao(EnumOperacao operacao, Double valor) {
+        if (operacao.equals(EnumOperacao.RAIZ)) {
+            if (!totalInicializado) {
+                System.out.println("Erro: Insira um número antes de calcular a raiz quadrada.");
+                return total;
+            }
+            if (total < 0) {
+                System.out.println("Erro: Não é possível calcular a raiz quadrada de um número negativo.");
+            } else {
+                total = Math.sqrt(total);
+            }
+            return total;
+        }
         if (!totalInicializado) {
             total = valor;
             totalInicializado = true;
@@ -42,6 +54,8 @@ public class CalculatorController {
                         total /= valor;
                     }
                     break;
+                case QUADRADO:
+                    total = Math.sqrt(total);
             }
         }
         return total;
