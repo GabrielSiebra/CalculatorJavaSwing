@@ -3,12 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package calculator.visor;
+import calculator.controller.CalculatorController;
+import calculator.enums.EnumOperacao;
+import java.text.NumberFormat;
 
 /**
  *
  * @author Gabriel
  */
 public class NewJFrame extends javax.swing.JFrame {
+    
+    private CalculatorController calculatorController;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(NewJFrame.class.getName());
 
@@ -17,6 +22,7 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
+        calculatorController = new CalculatorController();
     }
 
     /**
@@ -256,7 +262,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSomarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSomarActionPerformed
-        // TODO add your handling code here:
+        calculatorController.realizaOperacao(EnumOperacao.SOMA, Double.NaN);
     }//GEN-LAST:event_btSomarActionPerformed
 
     private void btACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btACActionPerformed
@@ -333,6 +339,14 @@ public class NewJFrame extends javax.swing.JFrame {
     private void tfValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfValorActionPerformed
+    
+    private Double stringDouble(String numero){
+        NumberFormat nf = NumberFormat.getInstance();
+        Double dv = null;
+        try{
+            
+        }
+    }
     
     private void limpa(){
         tfValor.setText("0.00");

@@ -10,7 +10,7 @@ import calculator.enums.EnumOperacao;
  *
  * @author Gabriel
  */
-public class Controller {
+public class CalculatorController {
     
     private Double total;
     
