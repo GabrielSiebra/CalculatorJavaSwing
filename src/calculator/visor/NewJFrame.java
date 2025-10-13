@@ -30,7 +30,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         tfValor = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        btFechar = new javax.swing.JButton();
+        btApagar = new javax.swing.JButton();
         btAC = new javax.swing.JButton();
         btPrimo = new javax.swing.JButton();
         btRaiz = new javax.swing.JButton();
@@ -60,17 +60,22 @@ public class NewJFrame extends javax.swing.JFrame {
         tfValor.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         tfValor.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         tfValor.setText("0,00");
+        tfValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfValorActionPerformed(evt);
+            }
+        });
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.setLayout(new java.awt.GridLayout(0, 4, 6, 8));
 
-        btFechar.setText("Fechar");
-        btFechar.addActionListener(new java.awt.event.ActionListener() {
+        btApagar.setText("←");
+        btApagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btFecharActionPerformed(evt);
+                btApagarActionPerformed(evt);
             }
         });
-        jPanel1.add(btFechar);
+        jPanel1.add(btApagar);
 
         btAC.setText("AC");
         btAC.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +239,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfValor)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -270,9 +275,12 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btIgualActionPerformed
 
-    private void btFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btFecharActionPerformed
+    private void btApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btApagarActionPerformed
+        String str = tfValor.getText();
+        StringBuilder w = new StringBuilder(str);
+        str = String.valueOf( w.deleteCharAt(str.length() - 1) );
+        tfValor.setText(str);
+    }//GEN-LAST:event_btApagarActionPerformed
 
     private void btSeteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeteActionPerformed
         digita("7");
@@ -321,6 +329,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private void btVirgulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVirgulaActionPerformed
      digita(",");
     }//GEN-LAST:event_btVirgulaActionPerformed
+
+    private void tfValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfValorActionPerformed
     
     private void limpa(){
         tfValor.setText("0.00");
@@ -340,10 +352,10 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAC;
+    private javax.swing.JButton btApagar;
     private javax.swing.JButton btCinco;
     private javax.swing.JButton btDividir;
     private javax.swing.JButton btDois;
-    private javax.swing.JButton btFechar;
     private javax.swing.JButton btIgual;
     private javax.swing.JButton btMultiplicar;
     private javax.swing.JButton btNove;
