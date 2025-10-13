@@ -27,7 +27,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="tfValor" max="32767" attributes="0"/>
-                  <Component id="jPanel1" alignment="1" pref="398" max="32767" attributes="0"/>
+                  <Component id="jPanel1" alignment="1" pref="342" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -92,6 +92,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Primo"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btPrimoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btRaiz">
           <Properties>
@@ -105,11 +108,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="x&#xb2;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btQuadradoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btPorcentagem">
           <Properties>
             <Property name="text" type="java.lang.String" value="%"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btPorcentagemActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btPositivoNegativo">
           <Properties>
@@ -120,6 +129,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="/"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btDividirActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btSete">
           <Properties>
@@ -181,6 +193,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="-"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSubtrairActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btUm">
           <Properties>

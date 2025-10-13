@@ -15,6 +15,6 @@ public enum EnumOperacao {
     MULTIPLICACAO,
     PORCENTAGEM,
     RAIZ,
-    PRIMO;
-    
+    PRIMO,
+    QUADRADO;
 }

@@ -5,7 +5,11 @@
 package calculator.visor;
 import calculator.controller.CalculatorController;
 import calculator.enums.EnumOperacao;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 
 /**
  *
@@ -14,6 +18,8 @@ import java.text.NumberFormat;
 public class NewJFrame extends javax.swing.JFrame {
     
     private CalculatorController calculatorController;
+    
+    private EnumOperacao ultimaOperacao;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(NewJFrame.class.getName());
 
@@ -92,6 +98,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.add(btAC);
 
         btPrimo.setText("Primo");
+        btPrimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPrimoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btPrimo);
 
         btRaiz.setText("√");
@@ -103,15 +114,30 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.add(btRaiz);
 
         btQuadrado.setText("x²");
+        btQuadrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btQuadradoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btQuadrado);
 
         btPorcentagem.setText("%");
+        btPorcentagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPorcentagemActionPerformed(evt);
+            }
+        });
         jPanel1.add(btPorcentagem);
 
         btPositivoNegativo.setText("+/-");
         jPanel1.add(btPositivoNegativo);
 
         btDividir.setText("/");
+        btDividir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDividirActionPerformed(evt);
+            }
+        });
         jPanel1.add(btDividir);
 
         btSete.setText("7");
@@ -171,6 +197,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.add(btSeis);
 
         btSubtrair.setText("-");
+        btSubtrair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSubtrairActionPerformed(evt);
+            }
+        });
         jPanel1.add(btSubtrair);
 
         btUm.setText("1");
@@ -245,7 +276,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfValor)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -262,23 +293,31 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSomarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSomarActionPerformed
-        calculatorController.realizaOperacao(EnumOperacao.SOMA, Double.NaN);
+        calculatorController.realizaOperacao(EnumOperacao.SOMA, stringToDouble(tfValor.getText()));
+        ultimaOperacao = EnumOperacao.SOMA;
+        limpa();
     }//GEN-LAST:event_btSomarActionPerformed
 
     private void btACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btACActionPerformed
         limpa();
+        calculatorController.zerar();
     }//GEN-LAST:event_btACActionPerformed
 
     private void btMultiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMultiplicarActionPerformed
-        // TODO add your handling code here:
+        calculatorController.realizaOperacao(EnumOperacao.MULTIPLICACAO, stringToDouble(tfValor.getText()));
+        ultimaOperacao = EnumOperacao.MULTIPLICACAO;
+        limpa();
     }//GEN-LAST:event_btMultiplicarActionPerformed
 
     private void btRaizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRaizActionPerformed
-        // TODO add your handling code here:
+        calculatorController.realizaOperacao(EnumOperacao.RAIZ, stringToDouble(tfValor.getText()));
+        ultimaOperacao = EnumOperacao.RAIZ;
+        limpa();
     }//GEN-LAST:event_btRaizActionPerformed
 
     private void btIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIgualActionPerformed
-        // TODO add your handling code here:
+        calculatorController.realizaOperacao(ultimaOperacao, stringToDouble(tfValor.getText()));
+        tfValor.setText(DoubleToString(calculatorController.getTotal()));
     }//GEN-LAST:event_btIgualActionPerformed
 
     private void btApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btApagarActionPerformed
@@ -339,17 +378,59 @@ public class NewJFrame extends javax.swing.JFrame {
     private void tfValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfValorActionPerformed
+
+    private void btSubtrairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSubtrairActionPerformed
+        calculatorController.realizaOperacao(EnumOperacao.SUBTRACAO, stringToDouble(tfValor.getText()));
+        ultimaOperacao = EnumOperacao.SUBTRACAO;
+        limpa();
+    }//GEN-LAST:event_btSubtrairActionPerformed
+
+    private void btDividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDividirActionPerformed
+        calculatorController.realizaOperacao(EnumOperacao.DIVISAO, stringToDouble(tfValor.getText()));
+        ultimaOperacao = EnumOperacao.DIVISAO;
+        limpa();
+    }//GEN-LAST:event_btDividirActionPerformed
+
+    private void btPrimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrimoActionPerformed
+        calculatorController.realizaOperacao(EnumOperacao.PRIMO, stringToDouble(tfValor.getText()));
+        ultimaOperacao = EnumOperacao.PRIMO;
+        limpa();
+    }//GEN-LAST:event_btPrimoActionPerformed
+
+    private void btPorcentagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPorcentagemActionPerformed
+        calculatorController.realizaOperacao(EnumOperacao.PORCENTAGEM, stringToDouble(tfValor.getText()));
+        ultimaOperacao = EnumOperacao.PORCENTAGEM;
+        limpa();
+    }//GEN-LAST:event_btPorcentagemActionPerformed
+
+    private void btQuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQuadradoActionPerformed
+        calculatorController.realizaOperacao(EnumOperacao.QUADRADO, stringToDouble(tfValor.getText()));
+        ultimaOperacao = EnumOperacao.QUADRADO;
+        limpa();
+    }//GEN-LAST:event_btQuadradoActionPerformed
     
-    private Double stringDouble(String numero){
+    private String DoubleToString(Double numero){
+        if(numero != null){
+            DecimalFormat formato = new DecimalFormat("##, ###, ###, ##0.00", new DecimalFormatSymbols(new Locale ("pt", "BR")));
+            formato.setParseBigDecimal(true);
+            return formato.format(numero);
+        }
+        return "";
+    }
+    
+    private Double stringToDouble(String numero){
         NumberFormat nf = NumberFormat.getInstance();
-        Double dv = null;
+        Double dv = 0.0;
         try{
+            dv = nf.parse(numero).doubleValue();
+        }catch(ParseException ex){
             
         }
+        return dv;
     }
     
     private void limpa(){
-        tfValor.setText("0.00");
+        tfValor.setText("0,00");
     }
     
     private void digita(String caractere){
@@ -359,7 +440,7 @@ public class NewJFrame extends javax.swing.JFrame {
          if(caractere.equals(",")&& tfValor.getText().contains(",")){
              
          }else{
-        tfValor.setText(tfValor.getText().concat(caractere));
+            tfValor.setText(tfValor.getText().concat(caractere));
             }
         }
     }
