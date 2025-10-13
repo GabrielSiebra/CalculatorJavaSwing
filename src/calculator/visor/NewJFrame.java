@@ -42,9 +42,9 @@ public class NewJFrame extends javax.swing.JFrame {
         btOito = new javax.swing.JButton();
         btNove = new javax.swing.JButton();
         btMultiplicar = new javax.swing.JButton();
-        btSeis = new javax.swing.JButton();
-        btCinco = new javax.swing.JButton();
         btQuatro = new javax.swing.JButton();
+        btCinco = new javax.swing.JButton();
+        btSeis = new javax.swing.JButton();
         btSubtrair = new javax.swing.JButton();
         btUm = new javax.swing.JButton();
         btDois = new javax.swing.JButton();
@@ -52,7 +52,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btSomar = new javax.swing.JButton();
         btZero = new javax.swing.JButton();
         btZeroZero = new javax.swing.JButton();
-        btPonto = new javax.swing.JButton();
+        btVirgula = new javax.swing.JButton();
         btIgual = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -135,13 +135,13 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         jPanel1.add(btMultiplicar);
 
-        btSeis.setText("4");
-        btSeis.addActionListener(new java.awt.event.ActionListener() {
+        btQuatro.setText("4");
+        btQuatro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSeisActionPerformed(evt);
+                btQuatroActionPerformed(evt);
             }
         });
-        jPanel1.add(btSeis);
+        jPanel1.add(btQuatro);
 
         btCinco.setText("5");
         btCinco.addActionListener(new java.awt.event.ActionListener() {
@@ -151,13 +151,13 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         jPanel1.add(btCinco);
 
-        btQuatro.setText("6");
-        btQuatro.addActionListener(new java.awt.event.ActionListener() {
+        btSeis.setText("6");
+        btSeis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btQuatroActionPerformed(evt);
+                btSeisActionPerformed(evt);
             }
         });
-        jPanel1.add(btQuatro);
+        jPanel1.add(btSeis);
 
         btSubtrair.setText("-");
         jPanel1.add(btSubtrair);
@@ -210,13 +210,13 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         jPanel1.add(btZeroZero);
 
-        btPonto.setText(".");
-        btPonto.addActionListener(new java.awt.event.ActionListener() {
+        btVirgula.setText(",");
+        btVirgula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btPontoActionPerformed(evt);
+                btVirgulaActionPerformed(evt);
             }
         });
-        jPanel1.add(btPonto);
+        jPanel1.add(btVirgula);
 
         btIgual.setText("=");
         btIgual.addActionListener(new java.awt.event.ActionListener() {
@@ -243,8 +243,8 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -255,7 +255,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btSomarActionPerformed
 
     private void btACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btACActionPerformed
-        // TODO add your handling code here:
+        limpa();
     }//GEN-LAST:event_btACActionPerformed
 
     private void btMultiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMultiplicarActionPerformed
@@ -271,7 +271,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btIgualActionPerformed
 
     private void btFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_btFecharActionPerformed
 
     private void btSeteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeteActionPerformed
@@ -286,24 +286,24 @@ public class NewJFrame extends javax.swing.JFrame {
        digita("9");
     }//GEN-LAST:event_btNoveActionPerformed
 
-    private void btSeisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeisActionPerformed
-       digita("6");
-    }//GEN-LAST:event_btSeisActionPerformed
+    private void btQuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQuatroActionPerformed
+       digita("4");
+    }//GEN-LAST:event_btQuatroActionPerformed
 
     private void btCincoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCincoActionPerformed
        digita("5");
     }//GEN-LAST:event_btCincoActionPerformed
 
-    private void btQuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQuatroActionPerformed
-       digita("4");
-    }//GEN-LAST:event_btQuatroActionPerformed
+    private void btSeisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeisActionPerformed
+       digita("6");
+    }//GEN-LAST:event_btSeisActionPerformed
 
     private void btUmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUmActionPerformed
        digita("1");
     }//GEN-LAST:event_btUmActionPerformed
 
     private void btDoisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDoisActionPerformed
-       digita(2);
+       digita("2");
     }//GEN-LAST:event_btDoisActionPerformed
 
     private void btTresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTresActionPerformed
@@ -318,9 +318,13 @@ public class NewJFrame extends javax.swing.JFrame {
      digita("00");
     }//GEN-LAST:event_btZeroZeroActionPerformed
 
-    private void btPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPontoActionPerformed
-     digita(".");
-    }//GEN-LAST:event_btPontoActionPerformed
+    private void btVirgulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVirgulaActionPerformed
+     digita(",");
+    }//GEN-LAST:event_btVirgulaActionPerformed
+    
+    private void limpa(){
+        tfValor.setText("0.00");
+    }
     
     private void digita(String caractere){
         if(tfValor.getText().equals("0,00")){
@@ -344,7 +348,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btMultiplicar;
     private javax.swing.JButton btNove;
     private javax.swing.JButton btOito;
-    private javax.swing.JButton btPonto;
     private javax.swing.JButton btPorcentagem;
     private javax.swing.JButton btPositivoNegativo;
     private javax.swing.JButton btPrimo;
@@ -357,6 +360,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btSubtrair;
     private javax.swing.JButton btTres;
     private javax.swing.JButton btUm;
+    private javax.swing.JButton btVirgula;
     private javax.swing.JButton btZero;
     private javax.swing.JButton btZeroZero;
     private javax.swing.JPanel jPanel1;

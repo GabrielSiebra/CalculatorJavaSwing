@@ -5,6 +5,8 @@
         <group>
             <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Calculator/src/calculator/Calculator.java</file>
             <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Calculator/src/calculator/visor/NewJFrame.java</file>
+            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Calculator/src/calculator/controller/Controller.java</file>
+            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Calculator/src/calculator/enums/EnumOperacao.java</file>
         </group>
     </open-files>
 </project-private>
