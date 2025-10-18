@@ -422,24 +422,31 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btPrimoActionPerformed
 
     private void btPorcentagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPorcentagemActionPerformed
-        Double valorDoVisor = stringToDouble(this.tfValor.getText());
-        
-        Double valorPercentual = this.calculatorController.realizaOperacao(EnumOperacao.PORCENTAGEM, valorDoVisor);
-        
+Double valorDoVisor = stringToDouble(this.tfValor.getText());
+        Double valorPercentual;
+
         if (this.ultimaOperacao == null) {
-            this.tfValor.setText(DoubleToString(valorPercentual));
+            valorPercentual = valorDoVisor / 100.0;
+            
             this.calculatorController.realizaOperacao(null, valorPercentual);
 
         } else {
+            if (this.ultimaOperacao == EnumOperacao.SOMA || this.ultimaOperacao == EnumOperacao.SUBTRACAO) {
+                Double totalAtual = this.calculatorController.getTotal();
+                valorPercentual = totalAtual * (valorDoVisor / 100.0);
+                
+            } else {
+                valorPercentual = valorDoVisor / 100.0;
+            }
+
             this.calculatorController.realizaOperacao(this.ultimaOperacao, valorPercentual);
 
-            Double resultadoFinal = this.calculatorController.getTotal();
+            Double resultadoFinal = this.calculatorController.getTotal(); // 10.0 / 0.1 = 100.0
 
             this.tfValor.setText(DoubleToString(resultadoFinal));
             this.ultimaOperacao = null;
-        }
     }//GEN-LAST:event_btPorcentagemActionPerformed
-
+    }
     private void btQuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQuadradoActionPerformed
         Double valor = stringToDouble(tfValor.getText());
         Double resultado = calculatorController.realizaOperacao(EnumOperacao.QUADRADO, valor);
