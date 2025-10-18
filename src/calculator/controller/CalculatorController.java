@@ -34,6 +34,30 @@ public class CalculatorController {
             return total;
         }
         
+        if(operacao.equals(EnumOperacao.PRIMO)){
+            boolean Primo = true;
+
+            if (total <= 1) {
+                Primo = false;
+            } else if (total == 2) {
+                Primo = true;
+            } else if (total % 2 == 0) {
+                Primo = false;
+            } else {
+                for (int i = 3; i <= Math.sqrt(total); i += 2) {
+                    if (total % i == 0) {
+                        Primo = false;
+                        break;
+                    }
+                }
+            }
+            if (Primo) {
+                System.out.println("Esse número é primo!");
+            } else {
+                System.out.println("Esse número não é primo!");
+            }
+        }
+
         if (operacao.equals(EnumOperacao.QUADRADO)) {
             total = Math.pow(valor, 2);
             return total;
