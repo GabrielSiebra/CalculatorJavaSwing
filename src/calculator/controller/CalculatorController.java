@@ -43,11 +43,11 @@ public class CalculatorController {
         
         if (operacao.equals(EnumOperacao.RAIZ)) {
             if (!totalInicializado) {
-                System.out.println("Erro: Insira um número antes de calcular a raiz quadrada.");
+                this.message = "Erro: Insira um número antes de calcular a raiz quadrada.";
                 return total;
             }
             if (total < 0) {
-                System.out.println("Erro: Não é possível calcular a raiz quadrada de um número negativo.");
+                this.message = "Erro: Não é possível calcular a raiz quadrada de um número negativo.";
             } else {
                 total = Math.sqrt(total);
             }
@@ -72,15 +72,21 @@ public class CalculatorController {
                 }
             }
             if (Primo) {
-                System.out.println("Esse número é primo!");
+                this.message = "Esse número é primo!";
             } else {
-                System.out.println("Esse número não é primo!");
+                this.message = "Esse número não é primo!";
             }
         }
 
         if (operacao.equals(EnumOperacao.QUADRADO)) {
             total = Math.pow(valor, 2);
             return total;
+        }
+        
+        if (operacao.equals(EnumOperacao.PORCENTAGEM)) {
+            this.total = valor / 100.0;
+            this.totalInicializado = true;
+            return this.total;
         }
         
         if (!totalInicializado) {
@@ -99,7 +105,7 @@ public class CalculatorController {
                     break;
                 case DIVISAO:
                     if (valor == 0) {
-                        System.out.println("Erro: Divisão por zero não é permitida.");
+                        this.message = "Erro: Divisão por zero não é permitida.";
                     } else {
                         total /= valor;
                     }

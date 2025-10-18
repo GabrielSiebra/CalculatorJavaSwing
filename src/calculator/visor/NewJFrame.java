@@ -419,7 +419,6 @@ public class NewJFrame extends javax.swing.JFrame {
         Double resultado = calculatorController.realizaOperacao(EnumOperacao.PRIMO, valor);
         tfValor.setText(DoubleToString(resultado));
         OutPutMessage.setText(calculatorController.getMessage());
-        limpa();
     }//GEN-LAST:event_btPrimoActionPerformed
 
     private void btPorcentagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPorcentagemActionPerformed
@@ -466,6 +465,7 @@ public class NewJFrame extends javax.swing.JFrame {
     
     private void limpa(){
         tfValor.setText("0,00");
+        OutPutMessage.setText("");
     }
     
     private void digita(String caractere){
@@ -511,3 +511,4 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tfValor;
     // End of variables declaration//GEN-END:variables
 }
+
