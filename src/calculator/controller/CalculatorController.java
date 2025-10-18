@@ -24,48 +24,41 @@ public class CalculatorController {
     public Double realizaOperacao(EnumOperacao operacao, Double valor) {
         this.message = ""; 
 
-        if (operacao == null) {
-            this.totalInicializado = true;
-            this.total = valor;
-            return this.total;
-        }
-
-        if (!this.totalInicializado) {
-            if (operacao.equals(EnumOperacao.RAIZ)) {
-            } else if (operacao.equals(EnumOperacao.PRIMO)) {
-            } else if (operacao.equals(EnumOperacao.QUADRADO)) {
+        if (operacao.equals(EnumOperacao.RAIZ)) {
+            if (valor < 0) {
+                this.message = "Erro: Não é possível calcular a raiz quadrada de um número negativo.";
+                return total;
             } else {
+                total = Math.sqrt(valor);
                 this.totalInicializado = true;
-                this.total = valor;
-                return this.total;
+                return total;
+            }
+        }
+                   
+        if (operacao.equals(EnumOperacao.PORCENTAGEM)) {
+            if(this.totalInicializado){
+                Double valorCalculado = this.total * (valor/100.0);
+                return valorCalculado;
+            }else{
+            this.total = valor / 100.0;
+            this.totalInicializado = true;
+            return this.total;
             }
         }
         
-        if (operacao.equals(EnumOperacao.RAIZ)) {
-            if (!totalInicializado) {
-                this.message = "Erro: Insira um número antes de calcular a raiz quadrada.";
-                return total;
-            }
-            if (total < 0) {
-                this.message = "Erro: Não é possível calcular a raiz quadrada de um número negativo.";
-            } else {
-                total = Math.sqrt(total);
-            }
-            return total;
-        }
         
         if(operacao.equals(EnumOperacao.PRIMO)){
             boolean Primo = true;
 
-            if (total <= 1) {
+            if (valor <= 1 || (valor % 1 !=0)) {
                 Primo = false;
-            } else if (total == 2) {
+            } else if (valor == 2) {
                 Primo = true;
-            } else if (total % 2 == 0) {
+            } else if (valor % 2 == 0) {
                 Primo = false;
             } else {
-                for (int i = 3; i <= Math.sqrt(total); i += 2) {
-                    if (total % i == 0) {
+                for (int i = 3; i <= Math.sqrt(valor); i += 2) {
+                    if (valor % i == 0) {
                         Primo = false;
                         break;
                     }
@@ -76,22 +69,20 @@ public class CalculatorController {
             } else {
                 this.message = "Esse número não é primo!";
             }
+            this.total = valor;
+            this.totalInicializado = true;
+            return this.total;
         }
 
         if (operacao.equals(EnumOperacao.QUADRADO)) {
             total = Math.pow(valor, 2);
+            this.totalInicializado = true;
             return total;
         }
         
-        if (operacao.equals(EnumOperacao.PORCENTAGEM)) {
-            this.total = valor / 100.0;
+        if (operacao == null || !this.totalInicializado) {
+            this.total = valor;
             this.totalInicializado = true;
-            return this.total;
-        }
-        
-        if (!totalInicializado) {
-            total = valor;
-            totalInicializado = true;
         } else {
             switch (operacao) {
                 case SOMA:
@@ -110,8 +101,6 @@ public class CalculatorController {
                         total /= valor;
                     }
                     break;
-                case QUADRADO:
-                    total = Math.sqrt(total);
             }
         }
         return total;

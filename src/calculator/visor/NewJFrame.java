@@ -422,9 +422,22 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btPrimoActionPerformed
 
     private void btPorcentagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPorcentagemActionPerformed
-        calculatorController.realizaOperacao(EnumOperacao.PORCENTAGEM, stringToDouble(tfValor.getText()));
-        ultimaOperacao = EnumOperacao.PORCENTAGEM;
-        limpa();
+        Double valorDoVisor = stringToDouble(this.tfValor.getText());
+        
+        Double valorPercentual = this.calculatorController.realizaOperacao(EnumOperacao.PORCENTAGEM, valorDoVisor);
+        
+        if (this.ultimaOperacao == null) {
+            this.tfValor.setText(DoubleToString(valorPercentual));
+            this.calculatorController.realizaOperacao(null, valorPercentual);
+
+        } else {
+            this.calculatorController.realizaOperacao(this.ultimaOperacao, valorPercentual);
+
+            Double resultadoFinal = this.calculatorController.getTotal();
+
+            this.tfValor.setText(DoubleToString(resultadoFinal));
+            this.ultimaOperacao = null;
+        }
     }//GEN-LAST:event_btPorcentagemActionPerformed
 
     private void btQuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQuadradoActionPerformed
