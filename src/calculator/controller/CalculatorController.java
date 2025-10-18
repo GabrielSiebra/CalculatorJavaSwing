@@ -15,12 +15,32 @@ public class CalculatorController {
 
     private Double total;
     private boolean totalInicializado;
+    private String message;
 
     public CalculatorController() {
         zerar();
     }
 
     public Double realizaOperacao(EnumOperacao operacao, Double valor) {
+        this.message = ""; 
+
+        if (operacao == null) {
+            this.totalInicializado = true;
+            this.total = valor;
+            return this.total;
+        }
+
+        if (!this.totalInicializado) {
+            if (operacao.equals(EnumOperacao.RAIZ)) {
+            } else if (operacao.equals(EnumOperacao.PRIMO)) {
+            } else if (operacao.equals(EnumOperacao.QUADRADO)) {
+            } else {
+                this.totalInicializado = true;
+                this.total = valor;
+                return this.total;
+            }
+        }
+        
         if (operacao.equals(EnumOperacao.RAIZ)) {
             if (!totalInicializado) {
                 System.out.println("Erro: Insira um número antes de calcular a raiz quadrada.");
@@ -98,6 +118,13 @@ public class CalculatorController {
     public void zerar() {
         this.total = 0.0;
         this.totalInicializado = false;
+        this.message = "";
+    }
+    
+    public String getMessage() {
+        String msg = this.message;
+        this.message = "";
+        return msg;
     }
 }
     

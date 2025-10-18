@@ -66,6 +66,8 @@ public class NewJFrame extends javax.swing.JFrame {
         btZeroZero = new javax.swing.JButton();
         btVirgula = new javax.swing.JButton();
         btIgual = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        OutPutMessage = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -268,6 +270,23 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         jPanel1.add(btIgual);
 
+        OutPutMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OutPutMessageActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(OutPutMessage)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(OutPutMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -276,16 +295,19 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfValor)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -310,9 +332,10 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btMultiplicarActionPerformed
 
     private void btRaizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRaizActionPerformed
-        calculatorController.realizaOperacao(EnumOperacao.RAIZ, stringToDouble(tfValor.getText()));
-        ultimaOperacao = EnumOperacao.RAIZ;
-        limpa();
+        Double valor = stringToDouble(tfValor.getText());
+        Double resultado = calculatorController.realizaOperacao(EnumOperacao.RAIZ, valor);
+        tfValor.setText(DoubleToString(resultado));
+        OutPutMessage.setText(calculatorController.getMessage());
     }//GEN-LAST:event_btRaizActionPerformed
 
     private void btIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIgualActionPerformed
@@ -392,8 +415,10 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btDividirActionPerformed
 
     private void btPrimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrimoActionPerformed
-        calculatorController.realizaOperacao(EnumOperacao.PRIMO, stringToDouble(tfValor.getText()));
-        ultimaOperacao = EnumOperacao.PRIMO;
+        Double valor = stringToDouble(tfValor.getText());
+        Double resultado = calculatorController.realizaOperacao(EnumOperacao.PRIMO, valor);
+        tfValor.setText(DoubleToString(resultado));
+        OutPutMessage.setText(calculatorController.getMessage());
         limpa();
     }//GEN-LAST:event_btPrimoActionPerformed
 
@@ -404,10 +429,16 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btPorcentagemActionPerformed
 
     private void btQuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQuadradoActionPerformed
-        calculatorController.realizaOperacao(EnumOperacao.QUADRADO, stringToDouble(tfValor.getText()));
-        ultimaOperacao = EnumOperacao.QUADRADO;
+        Double valor = stringToDouble(tfValor.getText());
+        Double resultado = calculatorController.realizaOperacao(EnumOperacao.QUADRADO, valor);
+        tfValor.setText(DoubleToString(resultado));
+        OutPutMessage.setText(calculatorController.getMessage());
         limpa();
     }//GEN-LAST:event_btQuadradoActionPerformed
+
+    private void OutPutMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OutPutMessageActionPerformed
+
+    }//GEN-LAST:event_OutPutMessageActionPerformed
     
     private String DoubleToString(Double numero){
         if (numero != null) {
@@ -450,6 +481,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField OutPutMessage;
     private javax.swing.JButton btAC;
     private javax.swing.JButton btApagar;
     private javax.swing.JButton btCinco;
@@ -475,6 +507,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btZero;
     private javax.swing.JButton btZeroZero;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField tfValor;
     // End of variables declaration//GEN-END:variables
 }
