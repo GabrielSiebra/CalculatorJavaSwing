@@ -132,6 +132,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.add(btPorcentagem);
 
         btPositivoNegativo.setText("+/-");
+        btPositivoNegativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPositivoNegativoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btPositivoNegativo);
 
         btDividir.setText("/");
@@ -458,6 +463,17 @@ Double valorDoVisor = stringToDouble(this.tfValor.getText());
     private void OutPutMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OutPutMessageActionPerformed
 
     }//GEN-LAST:event_OutPutMessageActionPerformed
+
+    private void btPositivoNegativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPositivoNegativoActionPerformed
+        Double valorAtual = stringToDouble(tfValor.getText());
+        if (valorAtual == 0.0) {
+            return;
+        }
+       
+        Double novoValor = valorAtual * -1;
+        
+        tfValor.setText(DoubleToString(novoValor));
+    }//GEN-LAST:event_btPositivoNegativoActionPerformed
     
     private String DoubleToString(Double numero){
         if (numero != null) {
